@@ -1,0 +1,61 @@
+﻿@model List<RealEstate.Models.PropertyListUserModel>
+
+@{
+	ViewData["Title"] = "Properties";
+}
+
+
+<div id="page-wrapper">
+    <div class="row">
+
+       
+        <!--	Property Grid
+        ===============================================================-->
+        <div class="full-row">
+            <div class="container">
+
+               <div class="row">
+                 <div class="col-lg-8">
+                       <form asp-action="Index">
+                            <select id="categoryTypeSelect" name="categoryType" class="form-select mb-3">
+                                <option value="">Categories</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="flat">Flat</option>
+                                <option value="building">Building</option>
+                                <option value="house">House</option>
+                                <option value="villa">Villa</option>
+                                <option value="office">Office</option>
+                            </select>
+                       </form>
+                 </div>
+               </div>
+
+               <div id="propertyListIndexContainer">
+                    <partial name="_IndexPropertyPartialView.cshtml" model="@Model" />
+               </div>
+                
+            </div>
+        </div>
+	</div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $("#categoryTypeSelect").change(function () {
+                $.ajax({
+                    type: "Get",
+                    url: "/Property/ShowProperties?categoryType=" + $(this).val(),
+                    success: function (data) {
+                        console.log('here');
+                        $("#propertyListIndexContainer").html("");
+                        $("#propertyListIndexContainer").html(data);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+}

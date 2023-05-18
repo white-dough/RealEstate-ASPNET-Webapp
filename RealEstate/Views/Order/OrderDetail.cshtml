@@ -1,0 +1,168 @@
+﻿@model RealEstate.Models.OrderDetailModel
+
+@{
+	ViewData["Title"] = "Order Detail";
+}
+
+
+<div id="page-wrapper">
+    <div class="row">
+        <!--	Banner   --->
+        <div class="banner-full-row page-banner" style="background-image:url('/images/breadcromb.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Order Detail</b></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <nav aria-label="breadcrumb" class="float-left float-md-right">
+                            <ol class="breadcrumb bg-transparent m-0 p-0">
+                                <li class="breadcrumb-item text-white"><a asp-action="Index" asp-controller="Order">Back</a></li>
+                                <li class="breadcrumb-item active">Order Detail</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--	Banner   --->
+
+        <div class="full-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="h5">Status</div>
+                               
+                                    @if (Model.order.Status == 0)
+                                    {
+                                    <div class="text-secondary">
+                                        <span>Pending</span>
+                                    </div>
+                                    }
+                                    else if (Model.order.Status == 1)
+                                    {
+                                    <div class="text-success">
+                                        <span>Approved</span>
+                                    </div>
+                                    }
+                                    else 
+                                    {
+                                    <div class="text-danger">
+                                        <span>Cancelled</span>
+                                    </div>
+                                    }
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-left h5 my-2 text-md-right">Order Date</div>
+                                <div class="text-left text-md-right">@Model.order.Date.ToString("mm-dd-yy")</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="single-property" style="width:1200px; height:700px; margin:30px auto 50px;">
+                                    <!-- Slide 1-->
+                                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="~/UploadFiles/@Model.property.PImage" class="ls-bg" alt="" /> </div>
+
+                                    <!-- Slide 2-->
+                                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="~/UploadFiles/@Model.property.PImageOne" class="ls-bg" alt="" /> </div>
+
+                                    <!-- Slide 3-->
+                                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="~/UploadFiles/@Model.property.PImageTwo" class="ls-bg" alt="" /> </div>
+
+                                    <!-- Slide 4-->
+                                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="~/UploadFiles/@Model.property.PImageThree" class="ls-bg" alt="" /> </div>
+
+                                    <!-- Slide 5-->
+                                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;"> <img width="1920" height="1080" src="~/UploadFiles/@Model.property.PImageFour" class="ls-bg" alt="" /> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="bg-success d-table px-3 py-2 rounded text-white text-capitalize">For @Model.property.Stype.ToString().Substring(0, 1).ToUpper()@Model.property.Stype.ToString().Substring(1, @Model.property.Stype.ToString().Length -1)</div>
+                                <h5 class="mt-2 text-secondary text-capitalize">@Model.property.Title</h5>
+                                <span class="mb-sm-20 d-block text-capitalize"><i class="fas fa-map-marker-alt text-success font-12"></i> &nbsp;@Model.property.Location</span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-success text-left h5 my-2 text-md-right">$@Model.property.Price</div>
+                                <div class="text-left text-md-right">Price</div>
+                            </div>
+                        </div>
+                        <div class="property-details">
+                            <div class="bg-gray property-quantity px-4 pt-4 w-100">
+                                <ul>
+                                    <li><span class="text-secondary">@Model.property.Size</span> Sqft</li>
+                                    <li><span class="text-secondary">@Model.property.Bedroom</span> Bedroom</li>
+                                    <li><span class="text-secondary">@Model.property.Bathroom</span> Bathroom</li>
+                                    <li><span class="text-secondary">@Model.property.Balcony</span> Balcony</li>
+                                    <li><span class="text-secondary">@Model.property.Hall</span> Hall</li>
+                                    <li><span class="text-secondary">@Model.property.Kitchen</span> Kitchen</li>
+                                </ul>
+                            </div>
+                            <h4 class="text-secondary my-4">Description</h4>
+                            <p>@Html.Raw(Model.property.PContent)</p>
+
+                            <h5 class="mt-5 mb-4 text-secondary">Property Summary</h5>
+                            <div class="table-striped font-14 pb-2">
+                                <table class="w-100">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>BHK :</td>
+                                            <td class="text-capitalize">@Model.property.Bhk</td>
+                                            <td>Property Type :</td>
+                                            <td class="text-capitalize">@Model.property.Type</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Floor :</td>
+                                            <td class="text-capitalize">@Model.property.Floor</td>
+                                            <td>Total Floor :</td>
+                                            <td class="text-capitalize">@Model.property.TotalFloor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>City :</td>
+                                            <td class="text-capitalize">@Model.property.City</td>
+                                            <td>Barangay :</td>
+                                            <td class="text-capitalize">@Model.property.Barangay</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 class="mt-5 mb-4 text-secondary">Features</h5>
+                            <div class="row">
+                                @Html.Raw(Model.property.Feature)
+
+                            </div>
+
+                            <h5 class="mt-5 mb-4 text-secondary">Floor Plans</h5>
+                            <div class="accordion" id="accordionExample">
+                                <button class="bg-gray hover-bg-success hover-text-white text-ordinary py-3 px-4 mb-1 w-100 text-left rounded position-relative" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Floor Plans </button>
+                                <div id="collapseOne" class="collapse show p-4" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <img src="~/UploadFiles/@Model.property.MapImage" alt="Not Available">
+                                </div>
+                                <button class="bg-gray hover-bg-success hover-text-white text-ordinary py-3 px-4 mb-1 w-100 text-left rounded position-relative collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Basement Floor</button>
+                                <div id="collapseTwo" class="collapse p-4" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <img src="~/UploadFiles/@Model.property.TopMapImage" alt="Not Available">
+                                </div>
+                                <button class="bg-gray hover-bg-success hover-text-white text-ordinary py-3 px-4 mb-1 w-100 text-left rounded position-relative collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Ground Floor</button>
+                                <div id="collapseThree" class="collapse p-4" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <img src="~/UploadFiles/@Model.property.GroundMapImage" alt="Not Available">
+                                </div>
+                            </div>
+
+                            <form method="post" action="/order/OrderCancel">
+                                <input type="hidden" name="id" value="@Model.order.Id" />
+                                <button type="submit" class="btn mt-5 btn-danger" style="border-radius:30px;">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

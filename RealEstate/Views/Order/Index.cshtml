@@ -1,0 +1,69 @@
+﻿@model List<RealEstate.Models.OrderListModel>
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="container my-5">
+            @if(TempData["success_message"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["success_message"]
+                </div>
+            }
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Order Property</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Order Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var order in Model)
+                    {
+                    <tr>
+                        <th scope="row">
+                                <a asp-action="OrderDetail" asp-controller="Order" asp-route-id="@order.Id">@order.Title</a>
+                        </th>
+                        <td>@order.Date.ToString("mm-dd-yy")</td>
+                        <td>
+                                @if (order.Status == 0)
+                                {
+                                    <div class="text-secondary">
+                                        <span>Pending</span>
+                                    </div>
+                                }
+                                else if (order.Status == 1)
+                                {
+                                    <div class="text-success">
+                                        <span>Approved</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-danger">
+                                        <span>Cancelled</span>
+                                    </div>
+                                }
+                            </td>
+                        <td>
+                                @if(order.Status  == 0)
+                                {
+                                    <a href="#"><button class="btn btn-danger">Cancel</button></a>
+                                } else
+                                {
+                                   <button class="btn btn-danger" disabled>Cancelled</button>
+                                }
+                            </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>

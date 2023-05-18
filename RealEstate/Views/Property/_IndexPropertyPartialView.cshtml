@@ -1,0 +1,75 @@
+﻿@model List<RealEstate.Models.PropertyListUserModel>
+
+
+<div class="row">
+
+    <div class="col-lg-8">
+        <div class="row">
+
+            @foreach (var property in Model)
+            {
+                <div class="col-md-6">
+                    <div class="featured-thumb hover-zoomer mb-4">
+                        <div class="overlay-black overflow-hidden position-relative">
+                            <img src="~/UploadFiles/@property.PImage" alt="pimage">
+
+                            <div class="sale bg-success text-white">For @property.Stype.ToString().Substring(0, 1).ToUpper()@property.Stype.ToString().Substring(1, @property.Stype.ToString().Length -1)</div>
+                            <div class="price text-primary text-capitalize">$ @property.Price<span class="text-white">@property.Size Sqft</span></div>
+
+                        </div>
+                        <div class="featured-thumb-data shadow-one">
+                            <div class="p-4">
+                                <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a asp-action="PropertyDetail" asp-route-id="@property.Id" asp-controller="Property">@property.Title</a></h5>
+                                <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> @property.Location</span>
+                            </div>
+                            <div class="px-4 pb-4 d-inline-block w-100">
+                                <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : @property.UserName</div>
+                                <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> @property.Date.ToString("dd-MM-yyyy")</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+
+
+        <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4 mt-5">Featured Property</h4>
+        <ul class="property_list_widget">
+
+            @foreach (var property in Model)
+            {
+                @if (property.IsFeatured == 1)
+                {
+                    <li>
+                        <img src="~/UploadFiles/@property.PImage" alt="pimage">
+                        <h6 class="text-secondary hover-text-success text-capitalize"><a asp-action="PropertyDetail" asp-route-id="@property.Id" asp-controller="Property">@property.Title</a></h6>
+                        <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> @property.Location</span>
+
+                    </li>
+                }
+            }
+
+        </ul>
+
+        <div class="sidebar-widget mt-5">
+            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recently Added Property</h4>
+            <ul class="property_list_widget">
+
+                @foreach (var property in Model.Take(6))
+                {
+                    <li>
+                        <img src="~/UploadFiles/@property.PImage" alt="pimage">
+                        <h6 class="text-secondary hover-text-success text-capitalize"><a asp-action="PropertyDetail" asp-route-id="@property.Id" asp-controller="Property">@property.Title</a></h6>
+                        <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> @property.Location</span>
+
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+
+</div>
