@@ -11352,19 +11352,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josep\\.nuget\\packages\\": {}
+    "C:\\Users\\Dwight\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Josephalforque\\waygamit\\RealEstate\\RealEstate\\RealEstate.csproj",
+      "projectUniqueName": "D:\\Academic\\INTPROG\\realstate-main\\realstate-main\\RealEstate\\RealEstate.csproj",
       "projectName": "RealEstate",
-      "projectPath": "D:\\Josephalforque\\waygamit\\RealEstate\\RealEstate\\RealEstate.csproj",
-      "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
-      "outputPath": "D:\\Josephalforque\\waygamit\\RealEstate\\RealEstate\\obj\\",
+      "projectPath": "D:\\Academic\\INTPROG\\realstate-main\\realstate-main\\RealEstate\\RealEstate.csproj",
+      "packagesPath": "C:\\Users\\Dwight\\.nuget\\packages\\",
+      "outputPath": "D:\\Academic\\INTPROG\\realstate-main\\realstate-main\\RealEstate\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\josep\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dwight\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11450,7 +11450,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   },
